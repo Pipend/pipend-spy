@@ -1,0 +1,10 @@
+.DS_Store
+.gitignore
+gulpfile.ls
+init.sh
+test.sh
+*.ls
+*.sublime-project
+*.sublime-workspace
+node_modules/
+test/

@@ -1,0 +1,1 @@
+mocha test/index.ls --compilers ls:livescript

@@ -1,0 +1,6 @@
+.DS_Store
+*.css
+*.js
+*.sublime-workspace
+data/
+node_modules/
