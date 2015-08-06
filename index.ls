@@ -3,10 +3,11 @@
 {id, map, obj-to-pairs, pairs-to-obj, Str, take} = require \prelude-ls 
 require! \ua-parser-js
 
-module.exports = do ->
+# :: [StorageDetail] -> Spy
+module.exports = (storage-details) ->
 
-    # record :: [StorageDetail] -> Event -> p [InsertedEvent]
-    record = (storage-details, event-object) -->
+    # record :: Event -> p [InsertedEvent]
+    record = (event-object) ->
     
         creation-date = new Date!
         creation-time = creation-date.get-time!
@@ -31,8 +32,8 @@ module.exports = do ->
 
             |> sequenceP
 
-    # record-req :: [StorageDetail] -> Request -> Event -> p ExtendedEvent
-    record-req = (storage-details, {headers, original-url, protocol}:req, event-object) -->
+    # record-req :: Request -> Event -> p ExtendedEvent
+    record-req = ({headers, original-url, protocol}:req, event-object) -->
 
         # get ip & country from event-object (if present) otherwise use IP2Location
         ip = event-object?.ip ? (get-ip-from-request req)
@@ -51,7 +52,6 @@ module.exports = do ->
                 |> Str.join \.
 
         record do 
-            storage-details
             {
                 ip
                 ip-tokens: [2 to 3]
@@ -77,4 +77,3 @@ module.exports = do ->
             } <<< event-object
 
     {record, record-req}
-    

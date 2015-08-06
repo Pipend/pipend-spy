@@ -1,6 +1,6 @@
 assert = require \assert
 {promises:{bindP, from-error-value-callback, new-promise, returnP, sequenceP, to-callback}} = require \async-ls
-{record, record-req} = require \../index
+spy = require \../index
 {MongoClient} = require \mongodb
 {map} = require \prelude-ls
 
@@ -43,7 +43,7 @@ describe "index.ls", ->
                 |> sequenceP
 
     specify "must record event", ->
-        inserted-events <- bindP record storage-details, {event-type: \test}
+        inserted-events <- bindP (spy storage-details).record {event-type: \test}
         validate-inserted-events inserted-events
 
     specify "must record event with request", ->
@@ -58,7 +58,7 @@ describe "index.ls", ->
             original-url: \localhost
             protocol: \http://
 
-        inserted-events <- bindP record-req storage-details, req, {event-type: \test}
+        inserted-events <- bindP (spy storage-details).record-req req, {event-type: \test}
         
         # validate if the events were indeed inserted into the database
         <- bindP (validate-inserted-events inserted-events)
