@@ -59,7 +59,7 @@ describe "index.ls", ->
             protocol: \http://
 
         inserted-events <- bindP (spy storage-details).record-req req, {event-type: \test}
-        
+
         # validate if the events were indeed inserted into the database
         <- bindP (validate-inserted-events inserted-events)
 

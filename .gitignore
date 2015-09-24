@@ -2,5 +2,6 @@
 *.css
 *.js
 *.sublime-workspace
+coverage/
 data/
 node_modules/

@@ -6,5 +6,7 @@ test.sh
 *.ls
 *.sublime-project
 *.sublime-workspace
+coverage/
+data/
 node_modules/
 test/

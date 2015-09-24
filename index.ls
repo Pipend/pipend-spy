@@ -32,7 +32,7 @@ module.exports = (storage-details) ->
 
             |> sequenceP
 
-    # record-req :: Request -> Event -> p ExtendedEvent
+    # record-req :: Request -> Event -> p [InsertedEvent]
     record-req = ({headers, original-url, protocol}:req, event-object) -->
 
         # get ip & country from event-object (if present) otherwise use IP2Location

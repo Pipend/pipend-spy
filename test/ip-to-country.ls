@@ -3,7 +3,7 @@ assert = require \assert
 
 describe "ip-to-country", ->
 
-    test-ip = \80.227.47.62
+    test-ip = \50.5.0.0
 
     specify "must return ip from request", (done) ->
         ip = get-ip-from-request do 
@@ -14,5 +14,5 @@ describe "ip-to-country", ->
 
     specify "must return country from ip", (done) ->
         country = get-country-from-ip test-ip
-        assert country == \AE, "country must be AE instead of #{country}"
+        assert country == \US, "country must be AE instead of #{country}"
         done!
