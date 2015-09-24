@@ -7,6 +7,6 @@ services: mongodb
 before script:
     - npm install -g gulp    
 script:
-    - npm run download-ip-country-db
     - gulp build
+    - npm run download-ip-country-db
     - npm run coveralls
