@@ -3,9 +3,10 @@ node_js:
     - "0.10"
     - "0.11"
     - "0.12"
+services: mongodb
 before script:
-    - npm install -g gulp
-    - npm run download-ip-country-db
+    - npm install -g gulp    
 script:
+    - npm run download-ip-country-db
     - gulp build
     - npm run coveralls
