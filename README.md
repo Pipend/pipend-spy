@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Pipend/pipend-spy.svg?branch=master)](https://travis-ci.org/Pipend/pipend-spy)    [![Coverage Status](https://coveralls.io/repos/Pipend/pipend-spy/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pipend/pipend-spy?branch=master)
+
 # Spy
 Spy is a database agnostic event recording library for node.js.
 
