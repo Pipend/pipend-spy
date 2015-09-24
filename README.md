@@ -117,6 +117,6 @@ Needs more unit tests & stores.
 
 # Development
 * `npm install`
-* run `npm run update-ip-db` to download ip-country data
+* run `npm run download-ip-country-db` to download ip-country data
 * run `gulp` to build & watch
 * `npm test` & `npm run coverage` for unit testing and coverage reports
