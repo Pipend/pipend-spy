@@ -1,5 +1,6 @@
 .DS_Store
 .gitignore
+npm-debug.log
 gulpfile.ls
 init.sh
 test.sh
