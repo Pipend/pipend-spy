@@ -33,8 +33,13 @@ module.exports = (connection-string, connection-options) -->
 
                         # insert :: insertInto -> object -> p insertedObject
                         insert: ({channel}?, event) -->
+                            res, rej <- new-promise
                             if !!channel
-                                redis-client.publish channel, JSON.stringify event
+                                message = JSON.stringify event
+                                redis-client.publish channel, message
+                                res message
+                            else
+                                rej "channel is undefined"
                         
                         # close :: a -> Void
                         close: (->)
