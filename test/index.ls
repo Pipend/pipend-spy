@@ -6,6 +6,7 @@ spy = require \../index
 
 describe "stores", ->
     require \./mongo
+    require \./redis
 
 require \./ip-to-country
 
@@ -66,7 +67,9 @@ describe "index.ls", ->
         # validate if the events have the expected properties
         inserted-events
             |> map (inserted-event) ->
-                return (new-promise (, rej) -> rej "inserted-event.ip must be #{req.socket.remote-address} instead of #{inserted-event.ip}") if inserted-event.ip != req.socket.remote-address                
-                returnP inserted-event
+                if inserted-event.ip != req.socket.remote-address
+                    (new-promise (, rej) -> rej "inserted-event.ip must be #{req.socket.remote-address} instead of #{inserted-event.ip}") 
+                else
+                    returnP inserted-event
             |> sequenceP
 

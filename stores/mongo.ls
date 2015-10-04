@@ -48,6 +48,7 @@ module.exports = (mongo-connection-string, mongo-connection-options) -->
 
     returnP do
 
+        # insert :: insertInto -> object -> p insertedObject
         insert: ({collection}, object) -->
             {ops} <- bindP (db.collection collection .insert object)
             returnP ops.0

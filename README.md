@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/Pipend/pipend-spy.svg?branch=master)](https://travis-ci.org/Pipend/pipend-spy)    [![Coverage Status](https://coveralls.io/repos/Pipend/pipend-spy/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pipend/pipend-spy?branch=master)
 
 # Spy
+
 Spy is a database agnostic event recording library for node.js.
 
 # Install
@@ -64,8 +65,7 @@ app.get("/", function(req, res){
 ```
 
 # Supported Stores
-* MongoDB
-  Storage details object for MongoDB : 
+* MongoDB :
 ```
 {
     "name": "mongo"
@@ -73,6 +73,18 @@ app.get("/", function(req, res){
     "connectionOptions": {} // passed directly to the node.js mongodb driver as connectionOptions
     "insertInto": {
         "collection": "collection" // name of the mongodb collection to insert data into
+    }
+}
+```
+
+* Redis :
+```
+{
+    "name": "redis"
+    "connectionString": "redis://host:port/database"
+    "connectionOptions": {}
+    "insertInto": {
+        "channel": "channel"
     }
 }
 ```
