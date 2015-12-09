@@ -3,13 +3,13 @@ require! \md5
 {concat-map, id, obj-to-pairs} = require \prelude-ls
 require! \redis
 
+# maintain a cache of all the open redis-connections 
+# instead of repeatedly connecting which can cause EMFILE exception
+# Map String, RedisConnection
+cache = {}
+
 # :: String -> RedisConnectionOptions -> p Store
 module.exports = (connection-string, connection-options) -->
-
-    # maintain a cache of all the open redis-connections 
-    # instead of repeatedly connecting which can cause EMFILE exception
-    # Map String, RedisConnection
-    cache = {}
 
     if !!cache[connection-string]
         returnP cache[connection-string]
